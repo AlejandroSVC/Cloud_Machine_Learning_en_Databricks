@@ -2,6 +2,24 @@
 
 ## Descripción general
 
+Flujo de trabajo integral de XGBoost en Databricks
+Este tutorial le guía en el entrenamiento y la implementación de un clasificador binario de XGBoost con Databricks, aprovechando la computación distribuida y PySpark para un aprendizaje automático escalable, rentable y seguro. Incluye monitorización, seguimiento de la calidad del modelo y recomendaciones para diferentes tamaños de datos.
+
+## Paso 1: Configuración del entorno
+1.1. Configuración del clúster
+• Datos pequeños (<1 GB): Un solo nodo, Standard_DS3_v2 (o similar), 1-2 trabajadores.
+• Datos medianos (1-50 GB): 4-8 trabajadores, escalado automático habilitado, Standard_DS4_v2.
+• Datos grandes (>50 GB): Más de 16 trabajadores, instancias optimizadas para computación (p. ej., Standard_F16s_v2), escalado automático, instancias puntuales para ahorrar costos.
+• Seguridad: Habilite roles de IAM a nivel de clúster y configure listas de control de acceso. • Monitoreo: Habilite las métricas del clúster y la entrega de registros a un almacenamiento seguro.
+
+Referencias:
+• Dimensionamiento del clúster
+https://docs.databricks.com/en/clusters/cluster-sizing.html
+• Mejores prácticas de seguridad
+https://docs.databricks.com/en/security/index.html
+• Monitoreo de clústeres
+https://docs.databricks.com/en/administration-guide/clusters/cluster-metrics.html
+
 # XGBoost en Databricks
 
 ## Paso 2: Ingesta y Procesamiento de Datos
@@ -144,7 +162,7 @@ mlflow.log_metric("AUC", auc)                              # Registrar métrica 
 mlflow.log_metric("Accuracy", acc)                         # Registrar métrica de precisión
 ```
 ## Paso 5: Despliegue del Modelo (Serving)
-Registrar modelo en MLflow
+Registrar el modelo en MLflow
 ```
-mlflow.register_model("runs:/<run_id>/model", "XGBoost_Binary_Classifier")  # Registrar modelo
+mlflow.register_model("runs:/<run_id>/model", "XGBoost_Binary_Classifier")  # Registrar el modelo en MLflow
 ```
