@@ -1,4 +1,6 @@
-# Cloud - XGBoost distribuido en Databricks usando PySpark
+# Cloud - XGBoost escalable y distribuido en Databricks usando PySpark
+
+![banner_databricks](docs/assets/images/banner_databricks.jpg)
 
 ## Descripción general
 
